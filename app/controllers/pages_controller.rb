@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
 
   def home
-  @pizzas = Pizza.all
+  @recipes = Recipe.all
   end
 end
