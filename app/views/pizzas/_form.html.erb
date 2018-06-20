@@ -1,0 +1,34 @@
+<%= form_with(model: pizza, local: true) do |form| %>
+  <% if pizza.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(pizza.errors.count, "error") %> prohibited this pizza from being saved:</h2>
+
+      <ul>
+      <% pizza.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <% @recipie.each do |recipe| %>
+    <%= form.label recipe.name %>
+    <%= form.radio_button :recipe_id, recipe.id %>
+  <%end%>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :pizza_name %>
+  </div>
+
+  <% @crust.each do |crust| %>
+    <%= form.label crust.name %>
+    <%= form.radio_button :crust_id, crust.id %>
+  <%end%>
+
+
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
